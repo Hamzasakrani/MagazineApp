@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>New</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <h3>Welcome {{name}}</h3>
+            <form class="d-flex">
+                <ul class="navbar-nav list-group-horizontal">
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="/new">Add Magazine</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="/dashboard">Dashboard</a>
+                    </li>
+                </ul>
+                <a href="/logout" class="btn btn-outline-success" type="submit">Logout</a>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-6">
+                <div class="card-body">
+                    <h5 class="card-title">Update User</h5>
+
+                    {% with messages = get_flashed_messages() %} {% if messages %}
+                    <ul class=flashes>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %} {% endwith %}
+                    <form action="account" method="post">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label">First Name</label>
+                            <input type="text" value="{{firstname}}" minlength="3" name="firstname" class="form-control" id="exampleInputEmail1" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                            <input type="text" value="{{lastname}}" minlength="3" name="lastname" class="form-control" id="exampleInputEmail1" required>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" value="{{email}}" name="email" class="form-control" id="exampleInputEmail1" required>
+
+                        </div>
+
+
+
+                        <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Update User</h5>
+                        {% for item in mymagazine %}
+                        <p><a href="/show/{{item[" _id "]}}">{{item["title"]}}</a> added by {{item["created_by"]}}
+                        </p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
