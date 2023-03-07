@@ -2,4 +2,6 @@
 
 magazine management app
 
-signup and signin with flask  
+-Signup and signin with flask  
+-Manage magazines
+-Control sessions
